@@ -1,0 +1,20 @@
+<div style="display: inline-flex;gap: 10px;margin: 10px">
+	<button (click)="addFormGroup()">ADD FORM GROUP</button>
+	<button (click)="clearGroup()">Clear</button>
+</div>
+
+<form [formGroup]="myFormGroup">
+	<div formArrayName="arrayForm">
+		<div *ngFor="let a of myFormGroup['controls'].arrayForm['controls']; index as i">
+			<div [formGroupName]="i" style="margin-top: 30px">
+				<label>
+          {{'Input ' + i + ':'}}
+          <input formControlName="textTest">
+        </label>
+				<button style="margin-left: 10px"
+        (click)="getValue(i)">Send Value</button>
+			</div>
+			<div style="margin-top: 30px;width: 100%;height: 1px;background-color: black"></div>
+		</div>
+	</div>
+</form>
